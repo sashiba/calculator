@@ -3,39 +3,26 @@ import React, { Component } from "react";
 class Calculator extends Component {
   state = {
     result: "",
-    operation: "",
-    x: "",
-    y: "",
   };
-
-  // op=="" -> clicks += x;
-  // op=="+,-,*,/" -> clicks +=y
-  // op =="=" -> x(op)y = result
 
   handleClick = (event) => {
-    const { textContent } = event.target;
+    const { name } = event.target;
     const { result } = this.state;
 
-    this.setState({ result: result + textContent });
-  };
-
-  handleClickOperator = (event) => {
-    const { textContent } = event.target;
+    this.setState({ result: result + name });
     // + - * / = Clear
-    console.log(textContent);
-    this.setState({ operation: textContent });
     // if = => calculate()
-    // if Clear -> clear()
+    // if C -> clear()
+    // CE -> backspace
   };
 
-  calculate = () => {};
+  calculate = () => {
+    eval(this.state.result);
+  };
 
   clear = () => {
     this.setState({
-      result: "0",
-      operation: "",
-      x: "",
-      y: "",
+      result: "",
     });
   };
 
@@ -51,80 +38,134 @@ class Calculator extends Component {
             value={this.state.result}
             readOnly
             name="result"
+            placeholder="0"
           />
         </div>
         <div>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="7"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             7
           </button>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="8"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             8
           </button>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="9"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             9
           </button>
         </div>
         <div>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="4"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             4
           </button>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="5"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             5
           </button>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="6"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             6
           </button>
         </div>
         <div>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="3"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             3
           </button>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="4"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             2
           </button>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="1"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             1
           </button>
         </div>
         <div>
-          <button className="button" onClick={(e) => this.handleClick(e)}>
+          <button
+            name="0"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
+          >
             0
           </button>
         </div>
         <div>
           <button
+            name="+"
             className="button"
-            onClick={(e) => this.handleClickOperator(e)}
+            onClick={(e) => this.handleClick(e)}
           >
             +
           </button>
           <button
+            name="-"
             className="button"
-            onClick={(e) => this.handleClickOperator(e)}
+            onClick={(e) => this.handleClick(e)}
           >
             -
           </button>
           <button
+            name="*"
             className="button"
-            onClick={(e) => this.handleClickOperator(e)}
+            onClick={(e) => this.handleClick(e)}
           >
             *
           </button>
           <button
+            name="/"
             className="button"
-            onClick={(e) => this.handleClickOperator(e)}
+            onClick={(e) => this.handleClick(e)}
           >
             /
           </button>
           <button
+            name="="
             className="button"
-            onClick={(e) => this.handleClickOperator(e)}
+            onClick={(e) => this.handleClick(e)}
           >
             =
           </button>
           <button
+            name="CE"
             className="button"
-            onClick={(e) => this.handleClickOperator(e)}
+            onClick={(e) => this.handleClick(e)}
+          >
+            CE
+          </button>
+          <button
+            name="C"
+            className="button"
+            onClick={(e) => this.handleClick(e)}
           >
             Clear
           </button>
