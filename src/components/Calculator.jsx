@@ -9,15 +9,23 @@ class Calculator extends Component {
     const { name } = event.target;
     const { result } = this.state;
 
-    this.setState({ result: result + name });
-    // + - * / = Clear
-    // if = => calculate()
-    // if C -> clear()
-    // CE -> backspace
+    if (name === "=") {
+      this.calculate();
+    } else if (name === "C") {
+      this.clear();
+    } else if (name === "CE" && result.length > 0) {
+      this.setState({ result: result.slice(0, -1) });
+    } else {
+      this.setState({ result: result + name });
+    }
   };
 
   calculate = () => {
-    eval(this.state.result);
+    const { result } = this.state;
+    const calculated = eval(result);
+    console.log("calculate: ", calculated);
+
+    this.setState({ result: calculated });
   };
 
   clear = () => {
@@ -96,7 +104,7 @@ class Calculator extends Component {
             3
           </button>
           <button
-            name="4"
+            name="2"
             className="button"
             onClick={(e) => this.handleClick(e)}
           >
