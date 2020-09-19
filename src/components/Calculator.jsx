@@ -34,12 +34,26 @@ class Calculator extends Component {
     });
   };
 
+  renderButton(name) {
+    return (
+      <button
+        key={name}
+        name={name}
+        className="button"
+        onClick={(e) => this.handleClick(e)}
+      >
+        {name}
+      </button>
+    );
+  }
+
   render() {
     return (
       <div>
         <header>
           <h1>Calculator</h1>
         </header>
+
         <div>
           <input
             className="inputBox"
@@ -49,134 +63,13 @@ class Calculator extends Component {
             placeholder="0"
           />
         </div>
-        <div>
-          <button
-            name="7"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            7
-          </button>
-          <button
-            name="8"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            8
-          </button>
-          <button
-            name="9"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            9
-          </button>
+        <div className="flex-container">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((el) => this.renderButton(el))}
         </div>
-        <div>
-          <button
-            name="4"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            4
-          </button>
-          <button
-            name="5"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            5
-          </button>
-          <button
-            name="6"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            6
-          </button>
-        </div>
-        <div>
-          <button
-            name="3"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            3
-          </button>
-          <button
-            name="2"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            2
-          </button>
-          <button
-            name="1"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            1
-          </button>
-        </div>
-        <div>
-          <button
-            name="0"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            0
-          </button>
-        </div>
-        <div>
-          <button
-            name="+"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            +
-          </button>
-          <button
-            name="-"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            -
-          </button>
-          <button
-            name="*"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            *
-          </button>
-          <button
-            name="/"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            /
-          </button>
-          <button
-            name="="
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            =
-          </button>
-          <button
-            name="CE"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            CE
-          </button>
-          <button
-            name="C"
-            className="button"
-            onClick={(e) => this.handleClick(e)}
-          >
-            Clear
-          </button>
+        <div className="flex-container">
+          {["+", "-", "*", "/", "=", "CE", "C"].map((el) =>
+            this.renderButton(el)
+          )}
         </div>
       </div>
     );

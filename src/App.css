@@ -19,11 +19,21 @@ header > h1 {
 }
 
 .button {
+  flex-grow: 1;
   font-size: 30px;
   text-align: center;
+  width: 33%;
+  height: 50px;
+  margin: 1px;
 }
 
 .inputBox {
   font-size: 30px;
   text-align: right;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
 }
